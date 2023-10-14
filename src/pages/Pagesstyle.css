@@ -1,0 +1,184 @@
+#exp{
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top:0
+}
+#imgs{
+padding-left: 30vw;
+padding-top: 3VW;}
+
+/* profile */
+#profile{
+    width: calc(100%); /* Set the width to 100% minus 120px */
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    top:0;
+    margin-top: -3vw;
+    padding-bottom: 3vw;
+
+}
+#name{
+    color: rgb(255, 255, 255);
+    margin-top: 7vw;
+    margin-left: 3vw;
+    font-weight: bolder;
+    font-size: 1.8vw;
+
+}
+#img{
+    margin-top: 5vw;
+}
+#top{
+    display: flex;
+
+    margin-left: 32vw;
+}
+#butt{
+    width: 8vw;
+    height: 2vw;
+    background-color: white;
+    color: black;
+    margin-top: 7vw;
+    margin-left: 2vw;
+    font-size: 0.8vw;
+    text-transform: capitalize;
+}
+#butt:hover{
+    background-color: slategrey;
+}
+#stats{
+    display: flex;
+    margin-top: 10vw;
+    margin-left: -34vw;
+}
+#p{
+    padding-left: 4vw;
+    color: white;
+    font-size: 1.2vw;
+}
+
+#bio{
+    margin-top: 13vw;
+    margin-left: -32vw;
+    font-size: medium;
+}
+/* progress */
+.prog{
+    background-color: rgb(0, 0, 0);
+width: 100%;
+height: 100%;
+top: 0;
+margin-left: 10vw;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+padding: 10px;
+}
+
+.content {
+text-align: center;
+color: red;
+font-size: xx-large;
+font-weight: bolder;
+margin-left: -23vw;
+padding-bottom: 11vw;
+
+}
+
+#soon {
+width:300px;
+margin-top: 10%;
+}
+
+/* home */
+.post__image{
+    width: 40vw;
+    height: 40vw;
+}
+.post__user-info{
+    display: flex;
+}
+.post__username{
+    font-size: large;
+    font-weight: bold;
+    padding: 0.8vw;
+}
+.post__header{
+margin-left: 31vw;
+
+}
+.post__buttons{
+    margin-left: -1vw;
+}
+.post{
+    margin-top: 2vw;
+    margin-left: -3vw;
+}
+/* messeges */
+.messages-list{
+    margin-left: -23vw;
+    width: 20vw;
+    border-right: 1px white solid;
+    padding-bottom: 21.4vw;
+}
+.namee{
+    display: flex;
+    border-bottom: 0.5px solid white;
+    padding-bottom: 1vw;
+    width: 19vw;
+
+}
+.editicon{
+    margin-left: 10vw;
+}
+.meseges-req{
+    padding-top: 1vw;
+    display: flex;
+}
+.messenger-logo{
+    margin-top: 15%;
+    padding: 1vw;
+    position: absolute;
+    top:0;
+    justify-content: center; 
+    align-items: center;
+    margin-left: 20%;
+
+}
+.regpage{
+    display: flex;
+    padding-bottom: 9.5vw;
+}
+.footer{
+    height: 122px;
+}
+.regform{
+    margin-top: 10vw;
+    margin-left: 40vw;
+    display: grid;
+    place-items: center;
+    background-color: rgba(29, 29, 29);
+    width: 30vw;
+    border-radius: 2%;
+    padding-bottom: 2vw;
+    
+}
+.regimg{
+    position: fixed;
+    margin-top: 10vw;
+    width: 20vw;
+        margin-left: 4vw;
+
+}
+.textbox{
+    width: 1vw;
+}
+.profile_posts{
+margin-left: 35vw;}
+.post__dots{
+align-content: center;
+}
+
+  
