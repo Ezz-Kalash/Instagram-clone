@@ -29,12 +29,12 @@ export default function Profile() {
     const newBio = prompt("please add the new the bio ");
 
     const updatedUserInfo = {
-      avatar: newavatar !== null | "" ? newavatar : avatar,
-      bio: newBio !== null | "" ? newBio : bio,
+      avatar: newavatar !== null  ? newavatar : avatar,
+      bio: newBio !== null ? newBio : bio,
     };
 
-    localStorage.setItem("bio",newBio !== null | "" ? newBio : bio)
-    localStorage.setItem("avatar",newavatar !== null | "" ? newavatar : avatar)
+    localStorage.setItem("bio",newBio !==  "" ? newBio : bio)
+    localStorage.setItem("avatar",newavatar !==  "" ? newavatar : avatar)
 
 
 
