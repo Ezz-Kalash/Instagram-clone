@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -9,11 +9,6 @@ import TabPanel from '@mui/lab/TabPanel';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import axios from 'axios';
-import explorePic1 from "../component/assets/ExplorePics/explorePic1.avif"
-import explorePic2 from "../component/assets/ExplorePics/explorePic2.avif"
-import explorePic4 from "../component/assets/ExplorePics/explorePic4.avif"
-import explorePic5 from "../component/assets/ExplorePics/explorePic5.avif"
-import explorePic6 from "../component/assets/ExplorePics/explorePic6.avif"
 import './Pagesstyle.css';
 import Leftbar from '../component/Leftbar';
 
@@ -21,6 +16,7 @@ export default function Profile() {
   const username = localStorage.getItem('username')
   const [bio, setBio] = useState(localStorage.getItem('bio'));
   const [avatar, setAvatar] = useState(localStorage.getItem('avatar'));
+  const [myPosts, setMyPosts] = useState([]);
 
   const token = localStorage.getItem('token');
 
@@ -29,19 +25,17 @@ export default function Profile() {
     const newBio = prompt("please add the new the bio ");
 
     const updatedUserInfo = {
-      avatar: newavatar !== null  ? newavatar : avatar,
-      bio: newBio !== null ? newBio : bio,
+      avatar: newavatar !== null ? newavatar : avatar,
+      bio: newBio !== null  ? newBio : bio,
     };
 
     localStorage.setItem("bio",newBio !==  "" ? newBio : bio)
     localStorage.setItem("avatar",newavatar !==  "" ? newavatar : avatar)
 
-
-
     axios.put('http://16.170.173.197/users', updatedUserInfo, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .then((response) => {
+    .then(() => {
       setAvatar(updatedUserInfo.avatar);
       setBio(updatedUserInfo.bio);
       window.location.reload();
@@ -49,33 +43,26 @@ export default function Profile() {
     .catch((error) => {console.error('Error updating user profile:', error) });
 };
 
-  const itemData = [
-    {
-      img: explorePic1,
-      title: 'random img',
-    },
-    {
-      img: explorePic2,
-      title: 'random img',
-    },
-    {
-      img: explorePic4,
-      title: 'random img',
-    },
-    {
-      img: explorePic5,
-      title: 'random img',
-    },
-    {
-      img: explorePic6,
-      title: 'random img',
-    },
-  ];
+  useEffect(() => {
+    const yourUserId =localStorage.getItem("id")
+
+    axios.get(`http://16.170.173.197/posts/${yourUserId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        const myPostsData = response.data.posts || [];
+        setMyPosts(myPostsData);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [token]);
 
   const [value, setValue] = React.useState('1');
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
 
   return (
     <div id="profile">
@@ -108,13 +95,17 @@ export default function Profile() {
               <Tab value="2" label="Reels" sx={{ color: 'white', paddingRight: "5vw", paddingLeft: "5vw" }} />
               <Tab value="3" label="Tagged" sx={{ color: 'white', paddingRight: "5vw", paddingLeft: "5vw" }} />
             </TabList>
-            <TabPanel value="1">
-              <ImageList sx={{ width: "57vw", height: "31.4vw", marginLeft: "-9vw" }} cols={3} rowHeight={"30vw"}>
-                {itemData.map((item) => (
-                  <ImageListItem key={item.img} sx={{ marginLeft: "1vw", marginBottom: "1vw" }}>
-                    <img srcSet={item.img} src={item.img} alt={item.title} />
+            <TabPanel value="1"> 
+              <ImageList sx={{ width: "57vw", height: "31.4vw", marginLeft: "-9vw" }} cols={3} rowHeight={"10vw"}>
+                
+            { myPosts.slice().reverse().map((post, index) => (
+            <div key={index} className="my-post">
+                  <ImageListItem key={post.img} sx={{}}>
+                    <img srcSet={post.image} src={post.image} alt={post.title} style={{height:"20vw"}} />
                   </ImageListItem>
-                ))}
+                  <p className='desc'>{post.description}</p>
+                  </div>))}
+
               </ImageList>
             </TabPanel>
             <TabPanel value="2">
@@ -134,4 +125,4 @@ export default function Profile() {
       </div>
     </div>
   );
-                }
+}

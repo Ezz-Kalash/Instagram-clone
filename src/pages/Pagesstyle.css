@@ -123,11 +123,13 @@ margin-left: 31vw;
     border-right: 1px white solid;
     padding-bottom: 21.4vw;
 }
+
 .namee{
     display: flex;
     border-bottom: 0.5px solid white;
     padding-bottom: 1vw;
     width: 19vw;
+
 
 }
 .editicon{
@@ -180,5 +182,15 @@ margin-left: 35vw;}
 .post__dots{
 align-content: center;
 }
-
+.my-post{
+}
+.desc{
+    background-color: rgba(255, 248, 220, 0.091);
+    width: 100%;
+    margin-top: -1vw;
+    padding-top: 2vw;
+    padding-bottom: 1vw;
+    text-align: center;
+    font-size: 0.8vw;
+}
   
