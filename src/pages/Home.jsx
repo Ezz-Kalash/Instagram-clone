@@ -42,12 +42,8 @@ const Home = () => {
     axios.request({
         method: "delete",
         url: `http://16.170.173.197/posts/${postId}`,
-        data: {
-          id: postId,
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        data: {id: postId,},
+        headers: {Authorization: `Bearer ${token}`},
       })
       .then(() => {
         const updatedPosts = posts.filter((post) => {
@@ -159,7 +155,7 @@ const Home = () => {
           <CardContent>
             <div className="post__buttons">
             <IconButton color="primary"onClick={() => toggleLikePost(post.id, isLiked(post.id))}>
-            <FavoriteBorderOutlinedIcon fontSize='medium' />
+            <FavoriteBorderOutlinedIcon  fontSize='medium' />
             </IconButton>
 
               <IconButton color="primary">

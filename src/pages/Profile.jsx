@@ -10,6 +10,9 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import axios from 'axios';
 import './Pagesstyle.css';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Leftbar from '../component/Leftbar';
 
 export default function Profile() {
@@ -20,16 +23,13 @@ export default function Profile() {
 
   const token = localStorage.getItem('token');
 
-  const updateUserProfile = () => {
+  const updateUserpic = () => {
     const newavatar = prompt("please add the new the newavatar link");
-    const newBio = prompt("please add the new the bio ");
 
     const updatedUserInfo = {
       avatar: newavatar !== null ? newavatar : avatar,
-      bio: newBio !== null  ? newBio : bio,
     };
 
-    localStorage.setItem("bio",newBio !==  "" ? newBio : bio)
     localStorage.setItem("avatar",newavatar !==  "" ? newavatar : avatar)
 
     axios.put('http://16.170.173.197/users', updatedUserInfo, {
@@ -37,10 +37,27 @@ export default function Profile() {
     })
     .then(() => {
       setAvatar(updatedUserInfo.avatar);
-      setBio(updatedUserInfo.bio);
       window.location.reload();
     })
-    .catch((error) => {console.error('Error updating user profile:', error) });
+    .catch((error) => {console.error('Error updating user pic:', error) });
+};
+const updateUserbio = () => {
+  const newBio = prompt("please add the new the bio ");
+
+  const updatedUserInfo = {
+    bio: newBio !== null  ? newBio : bio,
+  };
+
+  localStorage.setItem("bio",newBio !==  "" ? newBio : bio)
+
+  axios.put('http://16.170.173.197/users', updatedUserInfo, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  .then(() => {
+    setBio(updatedUserInfo.bio);
+    window.location.reload();
+  })
+  .catch((error) => {console.error('Error updating user bio:', error) });
 };
 
   useEffect(() => {
@@ -71,9 +88,23 @@ export default function Profile() {
         <Avatar id="img" sx={{ width: "11vw", height: "11vw" }} src={avatar} />
 
         <h2 id="name">{username}</h2>
-        <Button id="butt" variant="contained" onClick={updateUserProfile}>
+        <PopupState variant="popover" popupId="demo-popup-menu">
+      {(popupState) => (
+        <React.Fragment>
+        <Button id="butt" variant="contained" {...bindTrigger(popupState)}sx={{marginLeft:"35vw",marginBottom:"-3vw"}}>
           Edit Profile
         </Button>
+
+          <Menu {...bindMenu(popupState)}>
+            <MenuItem sx={{color:"black"}} onClick={()=>updateUserpic()}>Edit profile picture</MenuItem>
+            <MenuItem sx={{color:"black"}} onClick={()=>updateUserbio()}>Edit Bio</MenuItem>
+          </Menu>
+
+        </React.Fragment>
+      )}
+    </PopupState>
+
+        
         <Button id="butt" variant="contained">
           View actions
         </Button>

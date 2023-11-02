@@ -1,100 +1,122 @@
 
 .Storybar{
-margin-left: -6vw;
-}
-.aa{
-    word-wrap: break-word;
-    font-size:1vw;
-    width: 23vw;
-
-}
-.leftbar{
-    z-index: 100;
-
-    align-self: flex-start;
-    position: fixed;
-    top: 0;
-    background-color: black;
-    width: 18vw;
-    text-align: left;
-  font-size: medium;
-
-  padding-left: 2vw;
-  color: white;
-  left: 0;
-  height: 100%;
-  border-right: rgba(255, 255, 255, 0.169) 0.1px solid;
-
+  margin-left: -6vw;
   }
-
-  #insta{
-    margin-top: 2vw;
-  }
+  .aa{
+      word-wrap: break-word;
+      font-size:1vw;
+      width: 23vw;
   
-  #but{
-    text-decoration: none;
-    color: white;
-    height: 3vw;
-
   }
-  #menu{
-margin-top: 17vw;}
-
-.leftbartext{
-font-weight: bolder;
-  font-size: 1.1vw;
+  .leftbar{
+      z-index: 100;
   
-}
-
-  .rightbar{
-    z-index: 100;
-
-    background-color: #000000;
+      align-self: flex-start;
+      position: fixed;
+      top: 0;
+      background-color: black;
+      width: 18vw;
+      text-align: left;
+    font-size: medium;
+  
+    padding-left: 2vw;
     color: white;
-    width: 25vw;
-    align-self: flex-end;
-    position: absolute;
-top: 0;
-right: 0;
-  }
-
-
- .follow{
-  font-size: 1.25vw;
-  color: blue;
- }
-  #see{
-    font-size: 1.2vw;
-
-    color:white
-  }
-  /* form */
-  .post-form{
-    animation: fadeInOut 1s ease; 
-    text-align: center;
-    border-radius: 5%;
-    width: 40vw;
-    height: 30vw;
-    background-color: rgba(41, 41, 41, 0.832);
-    border: 1px solid #333;
-    padding: 10px;
-    position: fixed;
-    margin-left: 25vw;
-    margin-top: -22vw;
+    left: 0;
+    height: 100%;
+    border-right: rgba(255, 255, 255, 0.169) 0.1px solid;
+  
     }
-    #input{
-      background-color: rgba(41, 41, 41, 0.515);
+  
+    #insta{
+      margin-top: 2vw;
+    }
+    
+    #but{
+      text-decoration: none;
       color: white;
-      font-weight: bold;
-      border-color: rgba(255, 255, 255, 0.321);
-      padding: 7px;
-      width: 30vw;
-      margin-bottom: 4vw;
+      height: 3vw;
+  
     }
-
-    @keyframes fadeInOut {
-      0% {             transform: scale(0.6);      }
-      50% {
+    #menu{
+  margin-top: 17vw;}
+  
+  .leftbartext{
+  font-weight: bolder;
+    font-size: 1.1vw;
+    
+  }
+  
+    .rightbar{
+      z-index: 100;
+  
+      background-color: #000000;
+      color: white;
+      width: 25vw;
+      align-self: flex-end;
+      position: absolute;
+  top: 0;
+  right: 0;
+    }
+  
+  
+   .follow{
+    font-size: 1.25vw;
+    color: blue;
+   }
+    #see{
+      font-size: 1.2vw;
+  
+      color:white
+    }
+    /* form */
+    .post-form{
+      animation: fadeInOut 1s ease; 
+      text-align: center;
+      border-radius: 5%;
+      width: 40vw;
+      height: 30vw;
+      background-color: rgba(41, 41, 41, 0.832);
+      border: 1px solid #333;
+      padding: 10px;
+      position: fixed;
+      margin-left: 25vw;
+      margin-top: -22vw;
       }
-      100% {             transform: scale(1);
-      }}
+      #input{
+        background-color: rgba(41, 41, 41, 0.515);
+        color: white;
+        font-weight: bold;
+        border-color: rgba(255, 255, 255, 0.321);
+        padding: 7px;
+        width: 30vw;
+        margin-bottom: 4vw;
+      }
+      .storyimg{
+        width : 40vw;
+        height: 40vw;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.306);
+        z-index: 555;
+        animation: fadeInOut 0.3s ease; 
+        margin-left: -3.1vw;
+  
+      }
+      .real-story-modal{
+        width:40vw;
+        height: 40vw;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.628);
+        z-index: 525;
+        padding:30vw;
+        margin-left: -24vw;
+        margin-top: -30vw;
+        backdrop-filter: blur(3px);
+      }
+     
+  
+      @keyframes fadeInOut {
+        0% {             transform: scale(0.6);      }
+        50% {
+        }
+        100% {             transform: scale(1);
+        }}
